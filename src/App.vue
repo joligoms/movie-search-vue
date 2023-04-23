@@ -10,9 +10,18 @@
         class="border rounded-lg outline-2 focus:outline-dashed focus:outline-red-400 px-4 py-1"
         placeholder="Search for movies 🍿..."
       />
+      <button
+        class="border rounded-lg outline-2 px-4 py-1"
+        @click="search"
+      >
+        Search
+      </button>
     </PageHeader>
-    <main class="flex flex-grow items-center justify-center">
-      <MovieList :foo-text="newMovieSearch" />
+    <main class="flex flex-col flex-grow  items-center justify-center">
+      <MovieList
+        :loading="loading"
+        :movies="searchResults"
+      />
     </main>
     <PageFooter
       class="p-4 bg-black text-slate-300 text-center"
@@ -34,14 +43,18 @@ import MovieList from './components/MovieList.vue'
 import PageFooter from './components/PageFooter.vue';
 import PageHeader from './components/PageHeader.vue';
 import SearchBar from './components/SearchBar.vue';
-
+import useMovieAPI from './composables/useMovieAPI';
 import { ref } from 'vue'
+
+const {
+    searchMovies,
+    searchResults,
+    loading,
+} = useMovieAPI();
 
 const newMovieSearch = ref('');
 
+function search () {
+  searchMovies(newMovieSearch.value);
+}
 </script>
-
-<style scoped>
-
-
-</style>
