@@ -18,7 +18,13 @@
       </button>
     </PageHeader>
     <main class="flex flex-col bg-gray-100 flex-grow items-center justify-center">
+      <StatusBanner
+        v-if="!alreadyRequested"
+        status-title="Search for any movies!"
+        :custom-icon="MagnifyingGlassIcon"
+      />
       <MovieList
+        v-else
         :loading="loading"
         :movies="searchResults"
         :error="error"
@@ -40,16 +46,19 @@
 </template>
 
 <script setup>
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import MovieList from './components/MovieList.vue'
 import PageFooter from './components/PageFooter.vue';
 import PageHeader from './components/PageHeader.vue';
 import SearchBar from './components/SearchBar.vue';
+import StatusBanner from './components/StatusBanner.vue';
 import useMovieAPI from './composables/useMovieAPI';
 import { ref } from 'vue'
 
 const {
     searchMovies,
     searchResults,
+    alreadyRequested,
     loading,
     error,
 } = useMovieAPI();
