@@ -1,14 +1,20 @@
 <template>
   <div
     class="
-      flex flex-col
+      flex flex-col cursor-pointer
       rounded-lg overflow-hidden
       bg-white drop-shadow-lg
+      transition ease-in-out delay-100 duration-300
+      hover:scale-105 hover:brightness-95
     "
   >
     <CardImage
       :image="image"
-      image-class="relative object-cover w-full h-60 max-h-120"
+      image-class="
+        h-60
+        object-cover
+        hover:object-scale-down
+      "
     />
     <div
       class="

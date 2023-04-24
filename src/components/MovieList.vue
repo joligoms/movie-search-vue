@@ -1,5 +1,7 @@
 <template>
-  <div class="p-4">
+  <div
+    class="px-4 sm:px-8 lg:px-20 xl:px-40 py-4 md:py-8"
+  >
     <LoadingIcon
       v-if="loading"
       class="animate-spin animate-pulse text-black"
@@ -13,7 +15,12 @@
       />
       <div
         v-else
-        class="grid grid-cols-2 gap-2"
+        class="
+          grid gap-2 md:gap-8
+          grid-cols-2
+          sm:grid-cols-3
+          md:grid-cols-4
+        "
       >
         <MovieCard
           v-for="movie in movies"

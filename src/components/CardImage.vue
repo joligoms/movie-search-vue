@@ -11,7 +11,8 @@
   <img
     v-else
     :draggable="false"
-    :class="imageClass"
+    oncontextmenu="return false"
+    :class="['object-cover w-full', imageClass]"
     :src="image"
   >
 </template>
@@ -26,7 +27,7 @@ defineProps({
   },
   imageClass: {
     type: String,
-    default: 'object-contain w-40 h-60',
+    default: 'object-cover w-full',
   }
 });
 
