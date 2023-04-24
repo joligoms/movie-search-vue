@@ -2,7 +2,7 @@
   <!-- Doing mobile-first -->
   <div class="min-h-screen w-screen flex flex-col">
     <PageHeader
-      class="items-center gap-y-4 py-4"
+      class="items-center gap-y-4 py-4 sticky top-0 z-10"
       title="Movie Search"
     >
       <SearchBar
@@ -17,10 +17,11 @@
         Search
       </button>
     </PageHeader>
-    <main class="flex flex-col flex-grow  items-center justify-center">
+    <main class="flex flex-col bg-gray-100 flex-grow items-center justify-center">
       <MovieList
         :loading="loading"
         :movies="searchResults"
+        :error="error"
       />
     </main>
     <PageFooter
@@ -50,6 +51,7 @@ const {
     searchMovies,
     searchResults,
     loading,
+    error,
 } = useMovieAPI();
 
 const newMovieSearch = ref('');

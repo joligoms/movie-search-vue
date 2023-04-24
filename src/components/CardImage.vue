@@ -27,6 +27,6 @@ defineProps({
     type: String,
     default: 'object-contain w-40 h-60',
   }
-})
+});
 
 </script>

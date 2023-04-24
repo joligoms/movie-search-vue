@@ -1,5 +1,5 @@
 <template>
-  <header class="flex flex-col">
+  <header class="bg-white flex flex-col">
     <h1 class="text-1xl font-bold">
       {{ title }}
     </h1>

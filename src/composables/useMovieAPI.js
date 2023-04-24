@@ -81,13 +81,15 @@ export default function useMovieAPI () {
   const loading = ref(false);
   const error = ref(null);
 
-  watch(searchResults, () => console.log(toRaw(searchResults.value)));
-
   async function searchMovies (searchText) {
     try {
       loading.value = true;
 
-      const response = await getFetchWithQuery({s: searchText});
+      const response = await getFetchWithQuery({
+        s: searchText,
+        v: 1, // Stick to the API version, avoiding problems in the future.
+      });
+
       const data = await response.json();
 
       if (data.Response === "True") {

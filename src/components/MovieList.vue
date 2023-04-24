@@ -1,16 +1,22 @@
 <template>
-  <div>
+  <div class="p-4">
     <LoadingIcon
       v-if="loading"
       class="animate-spin animate-pulse text-black"
     />
-    <MovieCard
-      v-for="movie in movies"
+    <div
       v-else
-      :key="movie.imdbID"
-      :title="movie.Title"
-      :image="movie.Poster"
-    />
+      class="grid grid-cols-2 gap-2"
+    >
+      <MovieCard
+        v-for="movie in movies"
+        :key="movie.imdbID"
+        :title="movie.Title"
+        :image="movie.Poster"
+        :type="movie.Type"
+        :year="movie.Year"
+      />
+    </div>
   </div>
 </template>
 
