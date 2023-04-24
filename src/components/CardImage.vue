@@ -10,6 +10,7 @@
   </div>
   <img
     v-else
+    :draggable="false"
     :class="imageClass"
     :src="image"
   >

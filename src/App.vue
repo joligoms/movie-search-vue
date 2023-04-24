@@ -5,17 +5,12 @@
       class="items-center gap-y-4 py-4 sticky top-0 z-10"
       title="Movie Search"
     >
-      <SearchBar
+      <SearchForm
         v-model="newMovieSearch"
-        class="border rounded-lg outline-2 focus:outline-dashed focus:outline-red-400 px-4 py-1"
         placeholder="Search for movies 🍿..."
+        @search="searchMovies(newMovieSearch)"
+        @clear="newMovieSearch = null"
       />
-      <button
-        class="border rounded-lg outline-2 px-4 py-1"
-        @click="search"
-      >
-        Search
-      </button>
     </PageHeader>
     <main class="flex flex-col bg-gray-100 flex-grow items-center justify-center">
       <StatusBanner
@@ -50,7 +45,7 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import MovieList from './components/MovieList.vue'
 import PageFooter from './components/PageFooter.vue';
 import PageHeader from './components/PageHeader.vue';
-import SearchBar from './components/SearchBar.vue';
+import SearchForm from './components/SearchForm.vue';
 import StatusBanner from './components/StatusBanner.vue';
 import useMovieAPI from './composables/useMovieAPI';
 import { ref } from 'vue'
@@ -65,7 +60,4 @@ const {
 
 const newMovieSearch = ref('');
 
-function search () {
-  searchMovies(newMovieSearch.value);
-}
 </script>
