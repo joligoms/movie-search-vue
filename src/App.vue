@@ -38,6 +38,7 @@
         >@joligoms</a>
       </p>
     </PageFooter>
+    <router-view name="MovieDialog" />
   </div>
 </template>
 
@@ -49,6 +50,7 @@ import PageHeader from './components/PageHeader.vue';
 import SearchForm from './components/SearchForm.vue';
 import StatusBanner from './components/StatusBanner.vue';
 import useMovieAPI from './composables/useMovieAPI';
+import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 
 const {
@@ -59,6 +61,15 @@ const {
     error,
 } = useMovieAPI();
 
+const router = useRouter();
+
 const newMovieSearch = ref('');
+
+function viewMovie (movieId) {
+  router.push({
+    name: 'movie-details',
+    params: { movieId },
+  })
+}
 
 </script>

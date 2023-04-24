@@ -46,19 +46,14 @@ export default function useMovieAPI () {
       const response = await getFetchWithQuery({ i: imdbID });
 
       const data = await response.json();
-      console.log(data);
 
-      // if (data.Response === "True") {
-      //   searchResults.value = data.Search;
-      //   totalResults.value = data.totalResults;
+      if (data.Response === "True") {
+        movieDetails.value = data;
 
-      // } else {
-      //   searchResults.value = [];
-
-      //   if (data.Error !== 'Movie not found!') { // I prefer to not handle the absence of results as an "error".
-      //     error.value = data.Error;
-      //   }
-      // }
+      } else {
+        movieDetails.value = null;
+        error.value = data.Error;
+      }
 
     } catch (err) {
       error.value = err.message;

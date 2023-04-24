@@ -26,7 +26,7 @@ const props = defineProps({
   },
 
   customIcon: {
-    type: Object,
+    type: Function, // Vue Component
     default: null,
   },
 
