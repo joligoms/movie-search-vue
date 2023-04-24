@@ -23,6 +23,7 @@
         :loading="loading"
         :movies="searchResults"
         :error="error"
+        @view-movie="viewMovie"
       />
     </main>
     <PageFooter

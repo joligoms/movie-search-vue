@@ -29,6 +29,7 @@
           :image="movie.Poster"
           :type="movie.Type"
           :year="movie.Year"
+          @click="$emit('view-movie', movie.imdbID)"
         />
       </div>
     </template>
@@ -41,6 +42,8 @@ import LoadingIcon from './LoadingIcon.vue';
 import MovieCard from './MovieCard.vue';
 import StatusBanner from './StatusBanner.vue';
 import { FaceFrownIcon } from '@heroicons/vue/24/solid';
+
+defineEmits(['view-movie']);
 
 const props = defineProps({
   loading: {

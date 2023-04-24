@@ -16,10 +16,7 @@ export default function useMovieAPI () {
       loading.value = true;
       alreadyRequested.value = true;
 
-      const response = await getFetchWithQuery({
-        s: searchText,
-        v: 1, // Stick to the API version, avoiding problems in the future.
-      });
+      const response = await getFetchWithQuery({ s: searchText });
 
       const data = await response.json();
 
@@ -42,9 +39,39 @@ export default function useMovieAPI () {
     }
   }
 
+  async function findMovie (imdbID) {
+    try {
+      loading.value = true;
+
+      const response = await getFetchWithQuery({ i: imdbID });
+
+      const data = await response.json();
+      console.log(data);
+
+      // if (data.Response === "True") {
+      //   searchResults.value = data.Search;
+      //   totalResults.value = data.totalResults;
+
+      // } else {
+      //   searchResults.value = [];
+
+      //   if (data.Error !== 'Movie not found!') { // I prefer to not handle the absence of results as an "error".
+      //     error.value = data.Error;
+      //   }
+      // }
+
+    } catch (err) {
+      error.value = err.message;
+    } finally {
+      loading.value = false;
+    }
+  }
+
+  // TODO: create useFetch composable
   function getFetchWithQuery (queryParams) {
     return fetch(`${API_URL}?${new URLSearchParams({
       apikey: API_KEY,
+      v: 1, // Stick to the API version, avoiding problems in the future.
       ...queryParams,
     })}`);
   }
@@ -52,6 +79,7 @@ export default function useMovieAPI () {
   return {
     // functions
     searchMovies,
+    findMovie,
 
     // states
     searchResults,
