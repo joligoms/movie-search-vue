@@ -47,6 +47,12 @@
               Rating:
               {{ movieRating }}
             </h3>
+            <h3 class="font-thin">
+              Country:
+              {{ movieDetails.Country }}
+              &nbsp;
+              {{ flag(movieDetails.Country) }}
+            </h3>
           </div>
           <hr class="my-4">
           <p class="indent-5 text-justify text-neutral-600">
@@ -65,6 +71,7 @@ import CardImage from './CardImage.vue';
 import { useRouter } from 'vue-router';
 import { XMarkIcon } from '@heroicons/vue/24/solid';
 import { computed } from 'vue';
+import { flag } from 'country-emoji';
 
 const props = defineProps({
   movieId: {
