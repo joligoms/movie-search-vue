@@ -7,12 +7,16 @@
         class="
           flex justify-stretch items-stretch
           min-h-screen
-          px-4 py-8
-          sm:px-8 sm:py-16
         "
       >
-        <slot />
+        <div class="relative w-full max-w-md m-auto">
+          <slot />
+        </div>
+        <!-- <slot /> -->
       </div>
     </div>
   </teleport>
 </template>
+
+<script setup>
+</script>

@@ -1,6 +1,6 @@
 <template>
   <!-- Doing mobile-first -->
-  <div class="min-h-screen w-screen flex flex-col">
+  <div class="min-h-screen w-screen flex flex-col overflow-hidden">
     <PageHeader
       class="items-center gap-y-4 py-4 sticky top-0 z-10"
       title="Movie Search"
