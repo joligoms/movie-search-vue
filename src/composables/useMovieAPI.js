@@ -13,6 +13,8 @@ export default function useMovieAPI () {
 
   async function searchMovies (searchText) {
     try {
+      if (!searchText) return;
+
       loading.value = true;
       alreadyRequested.value = true;
 
