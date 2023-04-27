@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const API_URL = 'http://omdbapi.com';
+const API_URL = 'https://omdbapi.com';
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 export default function useMovieAPI () {
