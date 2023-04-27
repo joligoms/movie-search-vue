@@ -8,7 +8,7 @@
       <SearchForm
         v-model="newMovieSearch"
         placeholder="Search for movies 🍿..."
-        @search="searchMovies(newMovieSearch)"
+        @search="handleSearch"
         @clear="newMovieSearch = null"
       />
     </PageHeader>
@@ -53,6 +53,13 @@ import useMovieAPI from './composables/useMovieAPI';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 
+const props = defineProps({
+  searchQuery: {
+    type: String,
+    default: null,
+  }
+});
+
 const {
     searchMovies,
     searchResults,
@@ -63,13 +70,20 @@ const {
 
 const router = useRouter();
 
-const newMovieSearch = ref('');
+const newMovieSearch = ref(props.searchQuery ?? '');
+
+if (props.searchQuery) handleSearch()
 
 function viewMovie (movieId) {
   router.push({
     name: 'movie-details',
     params: { movieId },
   })
+}
+
+function handleSearch () {
+  searchMovies(newMovieSearch.value);
+  router.push({ query: { search: newMovieSearch.value }});
 }
 
 </script>

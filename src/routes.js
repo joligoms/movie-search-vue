@@ -5,12 +5,15 @@ const routes = [
   {
     path: '/',
     component: App,
-  },
-  {
-    path: '/detail/:movieId',
-    name: 'movie-details',
-    components: { MovieDialog },
-    props: true,
+    props: route => ({ searchQuery: route.query.search }),
+    children: [
+      {
+        path: '/detail/:movieId',
+        name: 'movie-details',
+        components: { MovieDialog },
+        props: true,
+      },
+    ]
   },
 ];
 

@@ -36,7 +36,7 @@ const props = defineProps({
   },
 });
 
-const { findMovie, movieDetails, loading, error } = useMovieAPI();
+const { findMovie, movieDetails, loading } = useMovieAPI();
 
 findMovie(props.movieId);
 
