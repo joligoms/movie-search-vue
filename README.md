@@ -11,7 +11,7 @@ A simple movie search application made with Vue 3 and TailwindCSS using the OMDb
 
 ### Navigate to the project directory:
   ```sh
-  git movie-search-vue
+  cd movie-search-vue
   ```
 
 ### Install the dependencies:
